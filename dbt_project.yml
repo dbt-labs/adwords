@@ -1,0 +1,19 @@
+
+name: 'adwords'
+version: '1.0'
+
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+target-path: "target"
+clean-targets: ["target"]
+test-paths: ["test"]
+data-paths: ["data"]
+
+models:
+  adwords:
+    stitch:
+      enabled: true
+      materialized: view
+      vars:
+        adwords_base_table:             #"schema.table"
+        campaigns_base_table:           #"schema.table"
