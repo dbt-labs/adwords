@@ -1,5 +1,5 @@
 select
-  googleclickid as gcl_id,
+  googleclickid as gclid,
   day::date as date_day,
   keywordid as criteria_id,
   adgroupid as ad_group_id
