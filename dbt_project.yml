@@ -16,4 +16,6 @@ models:
       materialized: view
       vars:
         adwords_base_table:             #"schema.table"
-        campaigns_base_table:           #"schema.table"
+        campaign_performance_report:    #"schema.table"
+        criteria_performance_report:    #"schema.table"
+        click_performance_report:       #"schema.table"
