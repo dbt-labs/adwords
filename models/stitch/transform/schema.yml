@@ -1,4 +1,4 @@
-adwords_xf:
+adwords_ad_performance_prep:
     constraints:
         unique:
             - gclid
