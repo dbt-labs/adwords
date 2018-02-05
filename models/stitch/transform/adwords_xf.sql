@@ -1,15 +1,15 @@
-with adwords as (
+with clicks as (
 
-  select * from {{ref('adwords')}}
+  select * from {{ref('adwords_click_performance')}}
+
+),
+
+criteria as (
+
+  select * from {{ref('adwords_criteria_performance')}}
 
 )
 
-select
-  *,
-  split_part(destination_url,'?',1) as base_url,
-  nullif(split_part(split_part(destination_url,'utm_source=',2), '&', 1), '') as utm_source,
-  nullif(split_part(split_part(destination_url,'utm_medium=',2), '&', 1), '') as utm_medium,
-  nullif(split_part(split_part(destination_url,'utm_campaign=',2), '&', 1), '') as utm_campaign,
-  nullif(split_part(split_part(destination_url,'utm_content=',2), '&', 1), '') as utm_content,
-  nullif(split_part(split_part(destination_url,'utm_term=',2), '&', 1), '') as utm_term
-from adwords
+select *
+from clicks
+join criteria using (criteria_id, ad_group_id, date_day)

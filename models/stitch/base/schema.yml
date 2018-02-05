@@ -1,10 +1,3 @@
-adwords_campaign_performance:
-    constraints:
-        unique:
-            - campaign_id
-        not_null:
-            - campaign_id
-
 adwords_click_performance:
     constraints:
         unique:

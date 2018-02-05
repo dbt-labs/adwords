@@ -1,11 +1,12 @@
 with base as (
     select *,
-             RANK() OVER (PARTITION BY day
-                          ORDER BY _sdc_report_datetime DESC) as latest
+             rank() over (partition by day
+                          order by _sdc_report_datetime desc) as latest
     from {{ var('criteria_performance_report') }}
 )
 
 select
+
     keywordid as criteria_id,
     criteriadisplayname as criteria_display_name,
     adgroup as ad_group,
@@ -19,5 +20,6 @@ select
     impressions,
     cast((cost::float/1000000::float) as numeric(38,6)) as spend,
     day::date as date_day
+
 from base
 where latest=1

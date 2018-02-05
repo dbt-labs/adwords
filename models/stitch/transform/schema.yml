@@ -1,0 +1,6 @@
+adwords_xf:
+    constraints:
+        unique:
+            - gclid
+        not_null:
+            - gclid
