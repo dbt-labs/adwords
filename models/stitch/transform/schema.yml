@@ -1,0 +1,6 @@
+adwords_ad_performance_prep:
+    constraints:
+        unique:
+            - gclid
+        not_null:
+            - gclid

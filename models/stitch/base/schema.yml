@@ -1,0 +1,13 @@
+adwords_click_performance:
+    constraints:
+        unique:
+            - gclid
+        not_null:
+            - gclid
+
+adwords_criteria_performance:
+    constraints:
+        unique:
+            - criteria_id
+        not_null:
+            - criteria_id
