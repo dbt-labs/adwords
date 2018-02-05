@@ -13,4 +13,4 @@ select
     impressions,
     'adwords'::varchar as ad_data_source
 
-from {{ref('adwords_click_performance')}}
+from {{ref('adwords_criteria_performance')}}
