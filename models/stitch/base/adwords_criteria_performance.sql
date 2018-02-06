@@ -1,14 +1,15 @@
 with base as (
     select *,
-             rank() over (partition by day
-                          order by _sdc_report_datetime desc) as latest
+        rank() over (
+            partition by day
+            order by _sdc_report_datetime desc
+        ) as latest
     from {{ var('criteria_performance_report') }}
 )
 
 select
 
     keywordid as criteria_id,
-    criteriadisplayname as criteria_display_name,
     adgroup as ad_group,
     adgroupid as ad_group_id,
     adgroupstate as ad_group_state,
