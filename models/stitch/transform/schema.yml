@@ -1,4 +1,4 @@
-adwords_ad_performance_prep:
+ADWORDS_AD_PERFORMANCE_PREP:
     constraints:
         unique:
             - gclid
