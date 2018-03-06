@@ -5,4 +5,4 @@ select
     keywordid as criteria_id,
     adgroupid as ad_group_id
 
-from {{ var('CLICK_PERFORMANCE_REPORT') }}
+from {{ var('click_performance_report') }}

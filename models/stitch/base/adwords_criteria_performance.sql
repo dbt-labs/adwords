@@ -4,7 +4,7 @@ with base as (
             partition by day
             order by _sdc_report_datetime desc
         ) as latest
-    from {{ var('CRITERIA_PERFORMANCE_REPORT') }}
+    from {{ var('criteria_performance_report') }}
 )
 
 select
