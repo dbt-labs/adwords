@@ -14,3 +14,4 @@ with gclid_base as (
 
 select * from gclid_base
 where row_num = 1
+and gclid is not null
