@@ -11,7 +11,7 @@ final as (
 
     select
 
-        md5(keywordid::varchar || date_day::varchar) as id,
+        md5(keywordid::varchar || day::varchar) as id,
         keywordid as criteria_id,
         adgroup as ad_group,
         adgroupid as ad_group_id,
