@@ -8,6 +8,6 @@ adwords_click_performance:
 adwords_criteria_performance:
     constraints:
         unique:
-            - criteria_id
+            - id
         not_null:
-            - criteria_id
+            - id
