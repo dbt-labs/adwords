@@ -2,7 +2,8 @@ with base as (
 
     select
         *,
-        rank() over (partition by day order by _sdc_report_datetime desc) as latest
+        rank() over (partition by day, customerid
+            order by _sdc_report_datetime desc) as latest
     from {{ var('criteria_performance_report') }}
 
 ),
