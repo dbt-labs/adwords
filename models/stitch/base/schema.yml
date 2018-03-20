@@ -8,6 +8,6 @@ ADWORDS_CLICK_PERFORMANCE:
 ADWORDS_CRITERIA_PERFORMANCE:
     constraints:
         unique:
-            - criteria_id
+            - id
         not_null:
-            - criteria_id
+            - id

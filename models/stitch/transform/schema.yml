@@ -1,6 +1,6 @@
 ADWORDS_AD_PERFORMANCE_PREP:
     constraints:
         unique:
-            - gclid
+            - id
         not_null:
-            - gclid
+            - id
