@@ -1,4 +1,4 @@
-with base as (
+with adwords_base as (
 
     select
         *,
@@ -8,7 +8,7 @@ with base as (
 
 ),
 
-final as (
+adwords_final as (
 
     select
 
@@ -26,9 +26,9 @@ final as (
         cast((cost::float/1000000::float) as numeric(38,6)) as spend,
         day::date as date_day
 
-    from base
+    from adwords_base
     where latest = 1
 
 )
 
-select * from final
+select * from adwords_final

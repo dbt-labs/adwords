@@ -1,5 +1,6 @@
 select
 
+    md5(date_day::varchar || criteria_id::varchar || ad_group_id::varchar) as id,
     date_day,
     null::varchar as utm_medium,
     null::varchar as utm_source,
