@@ -1,5 +1,6 @@
 select
 
+    id,
     date_day,
     null::varchar as utm_medium,
     null::varchar as utm_source,
