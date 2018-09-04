@@ -1,0 +1,1 @@
+{{ stitch_adwords_ad_groups() }}
