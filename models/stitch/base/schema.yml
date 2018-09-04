@@ -11,3 +11,31 @@ adwords_criteria_performance:
             - id
         not_null:
             - id
+
+adwords_accounts:
+    constraints:
+        unique:
+            - account_id
+        not_null:
+            - account_id
+            
+adwords_ad_groups:
+    constraints:
+        unique:
+            - ad_group_id
+        not_null:
+            - ad_group_id
+            
+adwords_ads:
+    constraints:
+        unique:
+            - ad_id
+        not_null:
+            - ad_id
+            
+adwords_campaigns:
+    constraints:
+        unique:
+            - campaign_id
+        not_null:
+            - campaign_id
