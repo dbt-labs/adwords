@@ -9,19 +9,15 @@
 
 with base as (
 
-    select
-        *,
-        rank() over (partition by day, customerid
-            order by _sdc_report_datetime desc) as latest
-    from {{ var('criteria_performance_report') }}
+    select * from {{ var('criteria_performance_report') }}
 
-),
+), 
 
-final as (
+aggregated as (
 
     select
 
-        md5(keywordid::varchar || adgroupid::varchar || day::varchar) as id,
+        md5(customerid::varchar || keywordid::varchar || adgroupid::varchar || day::varchar) as id,
         day::date as date_day,
         keywordid as criteria_id,
         adgroup as ad_group_name,
@@ -31,13 +27,31 @@ final as (
         campaignid as campaign_id,
         campaignstate as campaign_state,
         customerid as customer_id,
+        _sdc_report_datetime,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
         sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
 
     from base
+    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+
+), 
+
+ranked as (
+
+    select
+        *,
+        rank() over (partition by id
+            order by _sdc_report_datetime desc) as latest
+    from aggregated
+
+),
+
+final as (
+
+    select *
+    from ranked
     where latest = 1
-    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
 )
 
