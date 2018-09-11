@@ -5,11 +5,18 @@
 {% endmacro %}
 
 
-{% macro default__stitch_adwords_url_performance() %}
+{% macro default__stitch_fb_ad_creatives() %}
+
+{{ exceptions.raise_compiler_error("macro datediff not implemented for this adapter") }}
+
+{% endmacro %}
+
+
+{% macro snowflake__stitch_adwords_url_performance() %}
 
 with base as (
 
-    select * from {{ var('criteria_performance_report') }}
+    select * from {{ var('final_url_performance_report') }}
 
 ), 
 
@@ -17,7 +24,7 @@ aggregated as (
 
     select
 
-        md5(customerid::varchar || coalesce(finalurl::varchar, '')) as id,
+        md5(customerid::varchar || coalesce(finalurl::varchar, '') || day::varchar || campaignid::varchar || adgroupid::varchar) as id,
 
         day::date as date_day,
         
@@ -41,7 +48,7 @@ aggregated as (
         sum(impressions) as impressions,
         sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
         
-    from raw.adwords_stitch.final_url_report
+    from base
 
     group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 

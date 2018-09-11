@@ -12,6 +12,13 @@ adwords_criteria_performance:
         not_null:
             - id
 
+adwords_url_performance:
+    constraints:
+        unique:
+            - id
+        not_null:
+            - id
+
 adwords_accounts:
     constraints:
         unique:
