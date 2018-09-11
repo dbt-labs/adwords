@@ -14,6 +14,7 @@ models:
     vars:
       criteria_performance_report:    #"schema.table"
       click_performance_report:       #"schema.table"
+      final_url_performance_report:   #"schema.table"
       ads_table:                      #"schema.table"
       ad_groups_table:                #"schema.table"
       accounts_table:                 #"schema.table"
