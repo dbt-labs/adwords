@@ -7,7 +7,7 @@
 
 {% macro default__stitch_adwords_criteria_performance() %}
 
-with base as (
+with criteria_base as (
 
     select * from {{ var('criteria_performance_report') }}
 
@@ -32,7 +32,7 @@ aggregated as (
         sum(impressions) as impressions,
         sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
 
-    from base
+    from criteria_base
     group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
 
 ), 
