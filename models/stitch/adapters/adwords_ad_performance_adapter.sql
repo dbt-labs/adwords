@@ -1,7 +1,13 @@
 select
 
     date_day as campaign_date,
-    criteria_id,
+    url_host,
+    url_path,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_content,
+    utm_term,
     ad_group_id,
     ad_group_name,
     campaign_id,
@@ -11,4 +17,4 @@ select
     impressions,
     'adwords' as platform
 
-from {{ref('adwords_criteria_performance')}}
+from {{ref('adwords_url_performance')}}
