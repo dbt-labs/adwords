@@ -17,7 +17,14 @@ aggregated as (
 
     select
 
-        md5(customerid::varchar || keywordid::varchar || adgroupid::varchar || day::varchar) as id,
+        {{ dbt_utils.surrogate_key (
+            'customerid',
+            'keywordid',
+            'adgroupid',
+            'day'
+            
+        ) }}::varchar as id,
+        
         day::date as date_day,
         keywordid as criteria_id,
         adgroup as ad_group_name,
@@ -40,9 +47,11 @@ aggregated as (
 ranked as (
 
     select
+    
         *,
         rank() over (partition by id
             order by _sdc_report_datetime desc) as latest
+            
     from aggregated
 
 ),
