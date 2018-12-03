@@ -33,7 +33,7 @@ aggregated as (
         sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
 
     from criteria_base
-    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    {{ dbt_utils.group_by(11) }}
 
 ), 
 

@@ -1,48 +1,51 @@
-adwords_click_performance:
-    constraints:
-        unique:
-            - gclid
-        not_null:
-            - gclid
+version: 2
 
-adwords_criteria_performance:
-    constraints:
-        unique:
-            - id
-        not_null:
-            - id
-
-adwords_url_performance:
-    constraints:
-        unique:
-            - id
-        not_null:
-            - id
-
-adwords_accounts:
-    constraints:
-        unique:
-            - account_id
-        not_null:
-            - account_id
-            
-adwords_ad_groups:
-    constraints:
-        unique:
-            - ad_group_id
-        not_null:
-            - ad_group_id
-            
-adwords_ads:
-    constraints:
-        unique:
-            - ad_id
-        not_null:
-            - ad_id
-            
-adwords_campaigns:
-    constraints:
-        unique:
-            - campaign_id
-        not_null:
-            - campaign_id
+models:
+  - name: adwords_click_performance
+    columns:
+        - name: gclid
+          tests:
+              - unique
+              - not_null
+              
+  - name: adwords_criteria_performance
+    columns:
+        - name: id
+          tests:
+              - unique
+              - not_null
+              
+  - name: adwords_url_performance
+    columns:
+        - name: id
+          tests:
+              - unique
+              - not_null
+              
+  - name: adwords_accounts
+    columns:
+        - name: account_id
+          tests:
+              - unique
+              - not_null
+              
+  - name: adwords_ad_groups
+    columns:
+        - name: ad_group_id
+          tests:
+              - unique
+              - not_null
+              
+  - name: adwords_ads
+    columns:
+        - name: ad_id
+          tests:
+              - unique
+              - not_null
+              
+  - name: adwords_campaigns
+    columns:
+        - name: campaign_id
+          tests:
+              - unique
+              - not_null
