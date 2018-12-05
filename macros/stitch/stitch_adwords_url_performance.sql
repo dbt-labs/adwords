@@ -22,13 +22,13 @@ aggregated as (
         day::date as date_day,
 
         split_part(finalurl, '?', 1) as base_url,
-        {{ dbt_utils.get_url_parameter('finalurl', 'host') }}::varchar as url_host,
-        '/' || {{ dbt_utils.get_url_parameter('finalurl', 'path') }}::varchar as url_path,
-        {{ dbt_utils.get_url_parameter('finalurl', 'utm_source') }} as utm_source,
-        {{ dbt_utils.get_url_parameter('finalurl', 'utm_medium') }} as utm_medium,
-        {{ dbt_utils.get_url_parameter('finalurl', 'utm_campaign') }} as utm_campaign,
-        {{ dbt_utils.get_url_parameter('finalurl', 'utm_content') }} as utm_content,
-        {{ dbt_utils.get_url_parameter('finalurl', 'utm_term') }} as utm_term,
+        ({{ get_url_parameter(field='finalurl', url_parameter='host') }})::varchar as url_host,
+        '/' || ({{ get_url_parameter(field='finalurl', url_parameter='path') }})::varchar as url_path,
+        nullif(({{ get_url_parameter(field='finalurl', url_parameter='utm_campaign') }})::varchar, '') as utm_campaign,
+        nullif(({{ get_url_parameter(field='finalurl', url_parameter='utm_source') }})::varchar, '') as utm_source,
+        nullif(({{ get_url_parameter(field='finalurl', url_parameter='utm_medium') }})::varchar, '') as utm_medium,
+        nullif(({{ get_url_parameter(field='finalurl', url_parameter='utm_content') }})::varchar, '') as utm_content,
+        nullif(({{ get_url_parameter(field='finalurl', url_parameter='utm_term') }})::varchar, '') as utm_term,
         campaignid as campaign_id,
         campaign as campaign_name,
         adgroupid as ad_group_id,
@@ -42,18 +42,16 @@ aggregated as (
 
     from base
 
-    {{ dbt_utils.group_by(16) }}
+    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
 ),
 
 ranked as (
 
     select
-    
         *,
         rank() over (partition by id
             order by _sdc_report_datetime desc) as latest
-            
     from aggregated
 
 ),
@@ -83,14 +81,7 @@ aggregated as (
 
     select
 
-        {{ dbt_utils.surrogate_key (
-            'customerid',
-            'finalurl',
-            'day',
-            'campaignid',
-            'adgroupid'
-        
-        ) }}::varchar as id,
+        md5(customerid::varchar || coalesce(finalurl::varchar, '') || day::varchar || campaignid::varchar || adgroupid::varchar) as id,
 
         day::date as date_day,
 
@@ -116,18 +107,16 @@ aggregated as (
 
     from base
 
-    {{ dbt_utils.group_by(16) }}
+    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
 ),
 
 ranked as (
 
     select
-    
         *,
         rank() over (partition by id
             order by _sdc_report_datetime desc) as latest
-            
     from aggregated
 
 ),
