@@ -17,14 +17,7 @@ aggregated as (
 
     select
 
-        {{ dbt_utils.surrogate_key (
-            'customerid',
-            'finalurl',
-            'day',
-            'campaignid',
-            'adgroupid'
-        
-        ) }}::varchar as id,
+        md5(customerid::varchar || coalesce(finalurl::varchar, '') || day::varchar || campaignid::varchar || adgroupid::varchar) as id,
 
         day::date as date_day,
 

@@ -17,13 +17,7 @@ aggregated as (
 
     select
 
-        {{ dbt_utils.surrogate_key (
-            'customerid',
-            'keywordid',
-            'adgroupid',
-            'day'
-            
-        ) }}::varchar as id,
+        md5(customerid::varchar || keywordid::varchar || adgroupid::varchar || day::varchar) as id,
         
         day::date as date_day,
         keywordid as criteria_id,
