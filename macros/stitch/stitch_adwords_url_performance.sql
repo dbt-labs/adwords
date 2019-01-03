@@ -30,7 +30,7 @@ aggregated as (
 
         split_part(finalurl, '?', 1) as base_url,
         {{ dbt_utils.get_url_host('finalurl') }} as url_host,
-        '/' {{ dbt_utils.get_url_path('finalurl') }} as url_path,
+        '/' || {{ dbt_utils.get_url_path('finalurl') }} as url_path,
         {{ dbt_utils.get_url_parameter('finalurl', 'utm_source') }} as utm_source,
         {{ dbt_utils.get_url_parameter('finalurl', 'utm_medium') }} as utm_medium,
         {{ dbt_utils.get_url_parameter('finalurl', 'utm_campaign') }} as utm_campaign,
