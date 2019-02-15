@@ -28,7 +28,7 @@ aggregated as (
 
         day::date as date_day,
 
-        split_part(finalurl, '?', 1) as base_url,
+        {{ dbt_utils.split_part('finalurl', "'?'", 1) }} as base_url,
         {{ dbt_utils.get_url_host('finalurl') }} as url_host,
         '/' || {{ dbt_utils.get_url_path('finalurl') }} as url_path,
         {{ dbt_utils.get_url_parameter('finalurl', 'utm_source') }} as utm_source,
