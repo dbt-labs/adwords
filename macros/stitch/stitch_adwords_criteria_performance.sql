@@ -16,8 +16,14 @@ with criteria_base as (
 aggregated as (
 
     select
-
-        md5(customerid::varchar || keywordid::varchar || adgroupid::varchar || day::varchar) as id,
+        
+        {{ dbt_utils.surrogate_key (
+            'customerid',
+            'keywordid',
+            'adgroupid',
+            'day'
+        ) }}::varchar as id,
+        
         day::date as date_day,
         keywordid as criteria_id,
         adgroup as ad_group_name,
@@ -33,16 +39,18 @@ aggregated as (
         sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
 
     from criteria_base
-    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    {{ dbt_utils.group_by(11) }}
 
 ), 
 
 ranked as (
 
     select
+    
         *,
         rank() over (partition by id
             order by _sdc_report_datetime desc) as latest
+            
     from aggregated
 
 ),
