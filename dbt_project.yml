@@ -11,11 +11,6 @@ data-paths: ["data"]
 
 models:
   adwords:
-    stitch:
-      base:
-        adwords_url_performance:
-          enabled: false # currently not implemented for all adapters; override this flag if you want to use it.
-    vars:
       criteria_performance_report:    #"schema.table"
       click_performance_report:       #"schema.table"
       final_url_performance_report:   #"schema.table"

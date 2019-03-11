@@ -33,7 +33,7 @@ joined as (
         'adwords' as platform
 
     from criteria_performance
-    left join url_performance using (campaign_id)
+    left join url_performance using (campaign_id, ad_group_id, date_day)
     
 )
 
