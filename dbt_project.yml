@@ -12,16 +12,15 @@ data-paths: ["data"]
 models:
   adwords:
     stitch:
-      adapters:
-        adwords_url_ad_performance_adapter:
-          enabled: false
-        adwords_gclid_ad_performance_adapter:
-          enabled: true
-      criteria_performance_report:    #"schema.table"
-      click_performance_report:       #"schema.table"
-      final_url_performance_report:   #"schema.table"
-      ads_table:                      #"schema.table"
-      ad_groups_table:                #"schema.table"
-      accounts_table:                 #"schema.table"
-      campaigns_table:                #"schema.table"
+
+      vars:
+        criteria_performance_report:    #"schema.table"
+        click_performance_report:       #"schema.table"
+        final_url_performance_report:   #"schema.table"
+        ads_table:                      #"schema.table"
+        ad_groups_table:                #"schema.table"
+        accounts_table:                 #"schema.table"
+        campaigns_table:                #"schema.table"
+
+        adapter_value:                #url or criteria
         
