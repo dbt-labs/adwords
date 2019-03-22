@@ -36,7 +36,7 @@ aggregated as (
         _fivetran_synced,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
-        sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
+        sum(cast((cost::float) as numeric(38,6))) as spend
 
     from criteria_base
     {{ dbt_utils.group_by(11) }}
