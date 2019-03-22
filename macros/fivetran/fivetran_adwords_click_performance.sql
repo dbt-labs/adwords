@@ -13,8 +13,8 @@ with gclid_base as (
 
         gcl_id as gclid,
         date::date as date_day,
-        criteria_id as criteria_id,
-        ad_group_id as ad_group_id,
+        criteria_id,
+        ad_group_id,
         row_number() over (partition by gclid order by date_day) as row_num
 
     from {{ var('click_performance_report') }}
