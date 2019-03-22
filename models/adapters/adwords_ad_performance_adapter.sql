@@ -5,4 +5,3 @@
 {% if var('adapter_value') == 'criteria' %} 
         {{ stitch_adwords_adapter_criteria  () }}
 {% endif %}
-
