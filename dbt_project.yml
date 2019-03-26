@@ -10,17 +10,6 @@ data-paths: ["data"]
 
 models:
   adwords:
-# Uncomment to disable core tables for fivetran
-#      base:
-#        adwords_accounts:
-#          enabled: false
-#        adwords_ad_groups:
-#          enabled: false
-#        adwords_ads:
-#          enabled: false
-#        adwords_campaigns:
-#          enabled: false 
-      
       vars:
         etl:                            #stitch or fivetran
         criteria_performance_report:    #"schema.table"
