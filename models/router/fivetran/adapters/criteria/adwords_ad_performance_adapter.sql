@@ -6,7 +6,7 @@
 
 with base as (
 
-{{ fivetran_adwords_criteria_performance() }}
+    {{ fivetran_adwords_criteria_performance() }}
 
 ),
 

@@ -6,7 +6,7 @@
 
 with base as (
 
-{{ stitch_adwords_criteria_performance() }}
+    {{ stitch_adwords_criteria_performance() }}
 
 ),
 
