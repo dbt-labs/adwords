@@ -1,12 +1,12 @@
 {{
     config(
-        enabled = var('etl') == 'fivetran' and var('adapter_value') == 'url'
+        enabled = var('adapter_value') == 'url'
     )
 }}
 
 with base as (
 
-    {{ fivetran_adwords_url_performance() }}
+    select * from {{ ref('adwords_url_performance') }}
 
 ),
 
