@@ -1,11 +1,11 @@
-{% macro stitch_adwords_url_performance() %}
+{% macro fivetran_adwords_url_performance() %}
 
-    {{ adapter_macro('adwords.stitch_adwords_url_performance') }}
+    {{ adapter_macro('adwords.fivetran_adwords_url_performance') }}
 
 {% endmacro %}
 
 
-{% macro default__stitch_adwords_url_performance() %}
+{% macro default__fivetran_adwords_url_performance() %}
 
 with base as (
 
@@ -45,7 +45,7 @@ aggregated as (
 
         sum(clicks) as clicks,
         sum(impressions) as impressions,
-        sum(cast((cost::float/1000000::float) as numeric(38,6))) as spend
+        sum(cast((cost::float) as numeric(38,6))) as spend
 
     from base
 

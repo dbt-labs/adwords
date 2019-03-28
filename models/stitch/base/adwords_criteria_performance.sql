@@ -1,1 +1,0 @@
-{{ stitch_adwords_criteria_performance() }}

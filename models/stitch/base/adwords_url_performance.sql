@@ -1,1 +1,0 @@
-{{ stitch_adwords_url_performance() }}

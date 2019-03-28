@@ -21,7 +21,7 @@ ads_renamed as (
         baseadgroupid as base_ad_group_id,
         basecampaignid as base_campaign_id,
         policysummary as policy_summary,
-        status as status,
+        status,
         "_SDC_CUSTOMER_ID" as account_id
 
     from ads_source
