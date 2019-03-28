@@ -4,4 +4,34 @@
     )
 }}
 
-{{ fivetran_adwords_url_performance() }}
+with base as (
+
+    {{ fivetran_adwords_url_performance() }}
+
+),
+
+final as (
+
+select 
+    date_day as campaign_date,
+    ad_group_id,
+    ad_group_name,
+    campaign_id,
+    url_host,
+    url_path,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_term,
+    campaign_name,
+    clicks,
+    impressions,
+    spend,
+    'adwords' as platform
+
+from
+    base
+
+)
+
+select * from final
