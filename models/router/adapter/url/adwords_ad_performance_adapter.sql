@@ -4,7 +4,7 @@
     )
 }}
 
-with base as (
+with url_base as (
 
     select * from {{ ref('adwords_url_performance') }}
 
@@ -29,8 +29,7 @@ select
     spend,
     'adwords' as platform
 
-from
-    base
+from  url_base
 
 )
 

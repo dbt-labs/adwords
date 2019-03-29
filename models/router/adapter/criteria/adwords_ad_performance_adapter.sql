@@ -4,7 +4,7 @@
     )
 }}
 
-with base as (
+with criteria_base as (
 
     select * from {{ ref('adwords_criteria_performance') }}
 
@@ -27,7 +27,7 @@ final as (
         spend,
         'adwords' as platform
 
-    from base
+    from criteria_base
 )
 
 select * from final
