@@ -7,7 +7,7 @@
 
 {% macro default__fivetran_adwords_url_performance() %}
 
-with base as (
+with url_performance_base as (
 
     select * from {{ var('final_url_performance_report') }}
 
@@ -47,7 +47,7 @@ aggregated as (
         sum(impressions) as impressions,
         sum(cast((cost::float) as numeric(38,6))) as spend
 
-    from base
+    from url_performance_base
 
     {{ dbt_utils.group_by(16) }}
 
