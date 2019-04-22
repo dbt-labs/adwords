@@ -19,13 +19,13 @@ aggregated as (
         
         {{ dbt_utils.surrogate_key (
             'customer_id',
-            'criteria',
+            'id',
             'ad_group_id',
             'date'
         ) }}::varchar as id,
         
         date::date as date_day,
-        criteria as criteria_id,
+        id as criteria_id,
         ad_group_name,
         ad_group_id,
         ad_group_status as ad_group_state,
