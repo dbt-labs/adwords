@@ -21,7 +21,5 @@ vars:
   accounts_table:                 #"schema.table" (only for stitch)
   campaigns_table:                #"schema.table" (only for stitch)
   adapter_value:                  #url or criteria
-  
-models:
-  adwords:
+
       
