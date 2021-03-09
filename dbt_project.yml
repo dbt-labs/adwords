@@ -1,5 +1,8 @@
 name: 'adwords'
-version: '1.1'
+version: '0.3.0'
+config-version: 2
+
+require-dbt-version: [">=0.17.0"]
 
 source-paths: ["models"]
 analysis-paths: ["analysis"]
@@ -8,15 +11,15 @@ clean-targets: ["target"]
 test-paths: ["test"]
 data-paths: ["data"]
 
-models:
-  adwords:
-      vars:
-        etl:                            #stitch or fivetran
-        criteria_performance_report:    #"schema.table"
-        click_performance_report:       #"schema.table"
-        final_url_performance_report:   #"schema.table"
-        ads_table:                      #"schema.table" (only for stitch)
-        ad_groups_table:                #"schema.table" (only for stitch)
-        accounts_table:                 #"schema.table" (only for stitch)
-        campaigns_table:                #"schema.table" (only for stitch)
-        adapter_value:                  #url or criteria
+vars:
+  etl:                            #stitch or fivetran
+  criteria_performance_report:    #"schema.table"
+  click_performance_report:       #"schema.table"
+  final_url_performance_report:   #"schema.table"
+  ads_table:                      #"schema.table" (only for stitch)
+  ad_groups_table:                #"schema.table" (only for stitch)
+  accounts_table:                 #"schema.table" (only for stitch)
+  campaigns_table:                #"schema.table" (only for stitch)
+  adapter_value:                  #url or criteria
+
+      
