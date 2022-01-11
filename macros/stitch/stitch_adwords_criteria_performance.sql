@@ -1,6 +1,6 @@
 {% macro stitch_adwords_criteria_performance() %}
 
-    {{ adapter.dispatch('stitch_adwords_criteria_performance', 'adwords') }}
+    {{ adapter.dispatch('stitch_adwords_criteria_performance', 'adwords')() }}
 
 {% endmacro %}
 

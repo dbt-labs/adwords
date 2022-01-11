@@ -1,6 +1,6 @@
 {% macro fivetran_adwords_criteria_performance() %}
 
-    {{ adapter.dispatch('fivetran_adwords_criteria_performance', 'adwords') }}
+    {{ adapter.dispatch('fivetran_adwords_criteria_performance', 'adwords')() }}
 
 {% endmacro %}
 

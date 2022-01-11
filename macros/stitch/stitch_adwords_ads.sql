@@ -1,6 +1,6 @@
 {% macro stitch_adwords_ads() %}
 
-    {{ adapter.dispatch('stitch_adwords_ads', 'adwords') }}
+    {{ adapter.dispatch('stitch_adwords_ads', 'adwords')() }}
 
 {% endmacro %}
 
