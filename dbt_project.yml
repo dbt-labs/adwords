@@ -2,14 +2,14 @@ name: 'adwords'
 version: '0.3.0'
 config-version: 2
 
-require-dbt-version: [">=0.17.0"]
+require-dbt-version: [">=1.0.0", "<2.0.0"]
 
-source-paths: ["models"]
+model-paths: ["models"]
 analysis-paths: ["analysis"]
 target-path: "target"
 clean-targets: ["target"]
 test-paths: ["test"]
-data-paths: ["data"]
+seed-paths: ["data"]
 
 vars:
   etl:                            #stitch or fivetran
