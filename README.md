@@ -25,15 +25,12 @@ model. If your account use gclids or a combination of UTMs and gclids (ie some u
 with have just the gclid) then you should supply the `adapter_value` var "criteria". 
 This will query data from the `adwords_criteria_performance` report.
 
-##Stitch
+## Stitch
 [Here](https://www.stitchdata.com/docs/integrations/saas/google-adwords#schema) 
 is info about Stitch's Adwords connector. 
 
-##Fivetran
+## Fivetran
 [Here](https://fivetran.com/docs/applications/google-ads/setup-guide) 
 is info about Fivetran's Adwords connector.
 
 Fivetran does not support the core tables. The core tables are accounts, ad_groups, ads, and campaigns.
-
-##Contributing
-Additional contributions to this repo are very welcome! Check out this post on the best workflow for contributing to a package. All PRs should only include functionality that is contained within all Segment deployments; no implementation-specific details should be included.
