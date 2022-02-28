@@ -1,6 +1,6 @@
 {% macro fivetran_adwords_url_performance() %}
 
-    {{ adapter_macro('adwords.fivetran_adwords_url_performance') }}
+    {{ adapter.dispatch('fivetran_adwords_url_performance', 'adwords')() }}
 
 {% endmacro %}
 
@@ -18,12 +18,13 @@ aggregated as (
     select
 
         {{ dbt_utils.surrogate_key (
-            'customer_id',
-            'final_urls',
-            'date',
-            'campaign_id',
-            'ad_group_id'
-            
+            [
+              'customer_id',
+              'final_urls',
+              'date',
+              'campaign_id',
+              'ad_group_id'
+            ]
         ) }}::varchar as id,
 
         date::date as date_day,

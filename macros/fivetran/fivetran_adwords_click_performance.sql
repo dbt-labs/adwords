@@ -1,6 +1,6 @@
 {% macro fivetran_adwords_click_performance() %}
 
-    {{ adapter_macro('adwords.fivetran_adwords_click_performance') }}
+    {{ adapter.dispatch('fivetran_adwords_click_performance', 'adwords')() }}
 
 {% endmacro %}
 
